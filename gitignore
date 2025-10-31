@@ -1,0 +1,17 @@
+echo "
+# LLM specific
+*.ckpt
+*.pt
+*.bin
+*.h5
+*.model
+*.weights
+*.jsonl
+*.parquet
+__pycache__/
+data/
+logs/
+outputs/
+notebooks/.ipynb_checkpoints/
+.env
+" >> .gitignore
