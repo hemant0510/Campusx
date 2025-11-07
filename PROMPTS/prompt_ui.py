@@ -16,18 +16,25 @@ length_input = st.selectbox( "Select Explanation Length", ["Short (1-2 paragraph
 
 template = load_prompt('template.json')
 
-prompt = template.invoke({
-    "paper_input": paper_input,
-    "style_input": style_input,
-    "length_input": length_input
-})
+
 
 # #user_input = st.text_input("Enter your prompt")
 
 model = ChatOpenAI(model='gpt-4')
 
 if st.button('Summarize'):
-    response = model.invoke(prompt)
+    chain = template | model
+    response = chain.invoke({
+        "paper_input": paper_input,
+        "style_input": style_input,
+        "length_input": length_input
+    })
+    # prompt = template.invoke({cd P    
+    #     "paper_input": paper_input,
+    #     "style_input": style_input,
+    #     "length_input": length_input
+    # })
+    # response = model.invoke(prompt)
     st.write(response.content)
 
 # model = ChatOpenAI(model='gpt-4')
