@@ -9,12 +9,12 @@ chat_template = ChatPromptTemplate([
 ])
 
 chat_history = []
+
 #Load Chat History
 with open('chat_history.txt', 'r') as file:
     chat_history.append(file.readlines())
 
 print(chat_history)
-
 
 #Create prompt
 prompt = chat_template.invoke({'chat_history': chat_history, 'query': "Where is my refund?"})
